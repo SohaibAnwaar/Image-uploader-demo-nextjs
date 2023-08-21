@@ -38,7 +38,8 @@ function ImageCard({ index, url, comments }: ImageCardProps) {
   return (
     <Card
       direction={{ base: "column", sm: "row" }}
-      overflow="hidden"
+      overflowY={"scroll"}
+      height={"300px"}
       variant="outline"
       my={"10px"}
     >
@@ -58,13 +59,12 @@ function ImageCard({ index, url, comments }: ImageCardProps) {
         <Input
           value={commentInput}
           onChange={(event) => setCommentInput(event.target.value)}
-          size={"sm"}
           width={"300px"}
           placeholder="Enter your comment here!"
-          m={"20px"}
+          mx={"20px"}
         />
 
-        <CardFooter>
+        <CardFooter px={"20px"} py={"0"}>
           <Button
             variant="solid"
             colorScheme="blue"
@@ -83,19 +83,21 @@ function ImageCard({ index, url, comments }: ImageCardProps) {
             Show All Comments
           </Button>
         </CardFooter>
-        {showComments && comments && (
-          <>
-            {comments?.length ? (
-              comments.map((comment, index) => (
-                <Box bg="tomato" w="100%" color="white" m={"5px"} key={index}>
-                  {comment}
-                </Box>
-              ))
-            ) : (
-              <Text p={"20px"}>No Comments</Text>
-            )}
-          </>
-        )}
+        <Box overflowY={"scroll"} h="200px" mx={"20px"}>
+          {showComments && comments && (
+            <>
+              {comments?.length ? (
+                comments.map((comment, index) => (
+                  <Box bg="tomato" w="100%" color="white" m={"5px"} key={index}>
+                    {comment}
+                  </Box>
+                ))
+              ) : (
+                <Text p={"20px"}>No Comments</Text>
+              )}
+            </>
+          )}
+        </Box>
       </Stack>
     </Card>
   );
