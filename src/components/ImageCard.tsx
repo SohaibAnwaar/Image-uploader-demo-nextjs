@@ -1,5 +1,4 @@
-import { Button, Flex, Container, Image, Input } from "@chakra-ui/react";
-import { useRouter } from "next/router";
+import { Button, Image, Input } from "@chakra-ui/react";
 import React from "react";
 import { useDispatch, useSelector } from "react-redux";
 import {
@@ -13,7 +12,6 @@ import {
 } from "@chakra-ui/react";
 import { useState } from "react";
 import { ADD_COMMENT } from "src/store/types";
-import Layout from "src/components/Layout";
 interface ImageCardProps {
   index: number;
   url: string;
@@ -34,6 +32,7 @@ function ImageCard({ index, url, comments }: ImageCardProps) {
       type: ADD_COMMENT,
       payload: imagesCopy,
     });
+    setCommentInput("");
   };
 
   return (
@@ -59,6 +58,10 @@ function ImageCard({ index, url, comments }: ImageCardProps) {
         <Input
           value={commentInput}
           onChange={(event) => setCommentInput(event.target.value)}
+          size={"sm"}
+          width={"300px"}
+          placeholder="Enter your comment here!"
+          m={"20px"}
         />
 
         <CardFooter>
@@ -80,7 +83,6 @@ function ImageCard({ index, url, comments }: ImageCardProps) {
             Show All Comments
           </Button>
         </CardFooter>
-
         {showComments && comments && (
           <>
             {comments?.length ? (
@@ -98,4 +100,5 @@ function ImageCard({ index, url, comments }: ImageCardProps) {
     </Card>
   );
 }
+
 export default ImageCard;

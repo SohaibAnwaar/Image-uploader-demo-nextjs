@@ -4,10 +4,11 @@ import React from "react";
 interface ButtonProps {
   text: string;
   disabled: boolean;
+  display: any;
   onClick: () => void;
 }
 
-function Button({ text, disabled, onClick }: ButtonProps) {
+function Button({ text, disabled, onClick, display }: ButtonProps) {
   return (
     <Box
       as="button"
@@ -28,6 +29,7 @@ function Button({ text, disabled, onClick }: ButtonProps) {
         transform: "scale(0.98)",
         borderColor: "#bec3c9",
       }}
+      display={display}
       _focus={{
         boxShadow:
           "0 0 1px 2px rgba(88, 144, 255, .75), 0 1px 1px rgba(0, 0, 0, .15)",

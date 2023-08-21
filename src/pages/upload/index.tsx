@@ -58,6 +58,7 @@ function Upload() {
         }}
         disabled={!uploadedImage ? true : false}
         text="Upload!"
+        display="block"
       />
     </Layout>
   );

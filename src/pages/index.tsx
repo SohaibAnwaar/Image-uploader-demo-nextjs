@@ -1,7 +1,7 @@
 import Head from "next/head";
 import styles from "../styles/Home.module.css";
 
-import { Button } from "@chakra-ui/react";
+import { Box, Button } from "@chakra-ui/react";
 import { useRouter } from "next/router";
 import React from "react";
 import { useSelector } from "react-redux";
@@ -18,25 +18,27 @@ export default function Home() {
         <link rel="icon" href="/favicon.ico" />
       </Head>
       <Layout>
-        {images &&
-          images.map((image: any, index: number) => (
-            <ImageCard
-              url={image.url}
-              comments={image.comments}
-              key={image.id}
-              index={index}
-            />
-          ))}
+        <Box overflowY={"scroll"}>
+          {images &&
+            images.map((image: any, index: number) => (
+              <ImageCard
+                url={image.url}
+                comments={image.comments}
+                key={image.id}
+                index={index}
+              />
+            ))}
 
-        <Button
-          colorScheme="cyan"
-          color={"white"}
-          onClick={() => {
-            router.push("/upload");
-          }}
-        >
-          Upload Images!
-        </Button>
+          <Button
+            colorScheme="cyan"
+            color={"white"}
+            onClick={() => {
+              router.push("/upload");
+            }}
+          >
+            Upload Images!
+          </Button>
+        </Box>
       </Layout>
     </div>
   );
